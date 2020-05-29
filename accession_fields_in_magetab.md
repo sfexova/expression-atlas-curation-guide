@@ -1,3 +1,5 @@
+# Accession fields in MAGE-TAB
+
 MAGE-TAB files include several fields, usually comments, that contain accessions to data in other primary archives. Here is an overview of all accession fields and what content is expected.
 
 ## Accession fields in the IDF
