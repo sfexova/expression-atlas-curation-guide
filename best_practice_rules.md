@@ -20,6 +20,7 @@ Split values in sample characteristics and factors or else it will be very hard 
 
     Characteristics [strain] => C57BL/6J
     Characteristics [genotype] => wild type
+
 "Characteristics [organism part] => murine bone marrow" must be annotated as:
 
     Characteristics [organism] => Mus musculus
@@ -80,8 +81,8 @@ The allowed values should align with the values recognised by the atlas configur
 as "reference" (listed in atlas-prod config file [mapped_reference_assay_group_factor_values.xml](https://github.com/ebi-gene-expression-group/atlas-prod/blob/develop/analysis/differential/mapped_reference_assay_group_factor_values.xml)).
 For empty terms it is good to have consistency e.g. compound - none; stimulus - none; infect - none.
 
-| Attribute | values to use |
-|-----------|---------------|
+| Attribute | Values to use |
+|:----------|:--------------|
 | genotype | wild type genotype |
 | phenotype | wild type |
 | disease | normal |
@@ -106,9 +107,9 @@ E.g. cells carry a construct that causes repression of gene expression when acti
 Use `Characteristics[genotype]` (and `Factor Value[genotype]` if variable) to annotate with info about the construct. 
 Use `Characteristics[phenotype]` (and `Factor Value[phenotype]` if variable) to annotate with info about the
 gene expression/repression caused by compound. For example:
-| Characteristics[genotype] |	Characteristics[phenotype]|	...	| FactorValue[phenotype]|
-|---------------------------|---------------------------|-----|-----------------------|
-| FOXP3-tet-off	| expression of FOXP3 |	...	|expression of FOXP3 |
+| Characteristics[genotype] | Characteristics[phenotype] | ... | FactorValue[phenotype] |
+|:--------------------------|:--------------------------|:-----|:-----------------------|
+| FOXP3-tet-off	| expression of FOXP3 |	... |expression of FOXP3 |
 | FOXP3-tet-off	| doxycycline-mediated repression of FOXP3 | ... | doxycycline-mediated repression of FOXP3 |
 
 
@@ -118,7 +119,7 @@ stimulations (e.g. Interleukin-2). Compound should always be accompanied by the 
 The compound should be found in CHEBI ontology and the unit must be in EFO.
 
 | Factor Value[compound] | Factor Value[dose] | Unit[concentration unit] |
-|------------------------|--------------------|--------------------------|
+|:-----------------------|:-------------------|:-------------------------|
 | phorbol 13-acetate 12-myristate | 10 | millimolar |
 	
 
@@ -129,7 +130,7 @@ If we have multiple compounds as a single factor, we can combine them into a sin
 
 If a study involves both normal and tumor samples from the same patient, this should be coded as:
 | Characteristics[disease] | Characteristics[individual] | Characteristics[sampling site] |
-| -----------| -----------| ------------|
+|:-----------|:-----------|:------------|
 | breast cancer	| patient 1 | normal tissue adjacent to neoplasm |
 | breast cancer	| patient 1 | neoplasm |
 | normal | healthy_guy_X | normal tissue |
