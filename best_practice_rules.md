@@ -1,6 +1,9 @@
 # Curation Best Practice Guide
 
-## General styling rules
+
+## General rules
+
+These rules are basic curation style guidelines and apply to basically all experiments. 
 
 #### **Keep values simple.** 
  For sample characteristics and factors, keep the values as concise as possible. 
@@ -8,17 +11,16 @@
 #### **Single concept in a value.** 
 Split values in sample characteristics and factors or else it will be very hard to map the values cleanly to EFO terms.
 
-`Characteristics [genotype] => wild type C57BL/6J` must be annotated as:
+"Characteristics [genotype] => wild type C57BL/6J" must be annotated as:
 
     Characteristics [strain] => C57BL/6J
     Characteristics [genotype] => wild type
-
-`Characteristics [organism part] => murine bone marrow` must be annotated as:
+"Characteristics [organism part] => murine bone marrow" must be annotated as:
 
     Characteristics [organism] => Mus musculus
     Characteristics [organism part] => bone marrow
 
-`Characteristics [cell type] => thymic epithelial cell` must be annotated as:
+"Characteristics [cell type] => thymic epithelial cell" must be annotated as:
 
     Characteristics [organism part] => thymus
     Characteristics [cell type] => epithelial cell
@@ -43,7 +45,8 @@ Here are some examples of spelling out terms in full:
 Other common cases of acronyms:
 
     MEF => mouse embryonic fibroblast 
-(In EFO we have MEF cell line and mouse embryonic fibroblast cell. MEF is also an acronym for compound ‘fluoromethane’.)
+    	(Note, in EFO we have MEF cell line and mouse embryonic fibroblast cell. 
+         MEF is also an acronym for compound "fluoromethane".)
     LL-1 => interleukin-1
     TGF-beta => transforming growth factor beta
     IGF-1 => insulin-like growth factor 1
@@ -91,7 +94,10 @@ For empty terms it is good to have consistency e.g. compound - none; stimulus - 
 
 
 
+
 ## Rules for specific annotation types
+
+Some experiment designs require special rules to follow to make annotations consistent. 
 
 #### Compound-induced gene expression or repression
 E.g. cells carry a construct that causes repression of gene expression when activated by doxycycline. 
@@ -109,35 +115,36 @@ We use factor values `compound` and `dose` for any chemical. `Stimulus` is the p
 stimulations (e.g. Interleukin-2). Compound should always be accompanied by the dose and its unit. 
 The compound should be found in CHEBI ontology and the unit must be in EFO.
 
-    Factor Value[compound]	=> phorbol 13-acetate 12-myristate	
-    Factor Value[dose] => 10
-    Unit[concentration unit] => millimolar
+| Factor Value[compound] | Factor Value[dose] | Unit[concentration unit] |
+|------------------------|--------------------|--------------------------|
+| phorbol 13-acetate 12-myristate | 10 | millimolar |
 	
 
-If we have multiple compounds as a single factor, we can combine them into a single value under "compound" (and include the respective dose), for example "bovine serum albumin (0.06 millimolar) and sodium hydroxide (0.4 millimolar)". The same applies for two doses of the same compound:  methotrexate; first dose 120 milligram per kilogram; second dose 60 milligram per kilogram 
+If we have multiple compounds as a single factor, we can combine them into a single value under "compound" (and include the respective dose), for example `bovine serum albumin; 0.06 millimolar and sodium hydroxide; 0.4 millimolar`. The same applies for two doses of the same compound:  methotrexate; first dose 120 milligram per kilogram; second dose 60 milligram per kilogram 
 
 
 #### Normal and tumour samples
 
 If a study involves both normal and tumor samples from the same patient, this should be coded as:
-Characteristics[disease]	Characteristics[individual]	Characteristics[sampling site]
-breast cancer	patient 1	normal tissue adjacent to neoplasm
-breast cancer	patient 1	neoplasm
-normal	healthy_guy_X	normal tissue
+| Characteristics[disease] | Characteristics[individual] | Characteristics[sampling site] |
+| -----------| -----------| ------------|
+| breast cancer	| patient 1 | normal tissue adjacent to neoplasm |
+| breast cancer	| patient 1 | neoplasm |
+| normal | healthy_guy_X | normal tissue |
 
-so that will be found in Atlas. Characteristic[Individual] can be used to show which samples come from the same patient. Clinical information column could provide more information e.g. "normal tissue adjacent to tumor".
+Characteristic[Individual] can be used to show which samples come from the same patient. Clinical information column could provide more information e.g. "normal tissue adjacent to tumor".
 
 
 #### Organism parts and cell types not in ontology
 
-Generally use the main ontology label, not the synonyms and the most specific term, e.g. "heart ventricle" instead of "heart".
-If the term is not in any ontology, look up the previous zooma mapping here: <Laura please fill in path to file here>
+Generally use the main ontology label, not the synonyms and the most specific term, e.g. `heart ventricle` instead of `heart`.
+If the term is not in any ontology, look up the [previous zooma mapping](https://github.com/ebi-gene-expression-group/curated-metadata)
 
 
 #### Technical annotations
 
-Sometime submitters add technical information, such as "replicate", "sequencing batch", "run date" etc. 
-These values should not be samples characteristics or factors for Atlas experiments. 
+Sometime submitters add technical information, such as `replicate`, `sequencing batch`, `run date` etc. 
+These values should not be sample characteristics or factors for Atlas experiments. 
 To keep the information in the sample annotation, turn the attributes into Comments 
 (`Characteristics[replicate] => Comment[replicate]`).
 
