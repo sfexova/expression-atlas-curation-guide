@@ -59,7 +59,7 @@ Other common cases of acronyms:
 
 #### Use characteristics and factor types from the allowed list.
 List is specified as `atlas_property_types` in perl-modules GitHub in the file 
-[ae_atlas_controlled_vocabulary.yml](https://github.com/ebi-gene-expression-group/perl-atlas-modules/blob/7c8c05a577b68f6433ec5b19f6fe896d94a5e478/supporting_files/ae_atlas_controlled_vocabulary.yml)). 
+[ae_atlas_controlled_vocabulary.yml](https://github.com/ebi-gene-expression-group/perl-atlas-modules/blob/7c8c05a577b68f6433ec5b19f6fe896d94a5e478/supporting_files/ae_atlas_controlled_vocabulary.yml). 
 
 For example, terms like sample lot number and time unit are not really attributes of samples but are technical information of samples, or simply measurement units.
 
@@ -109,7 +109,7 @@ Use `Characteristics[phenotype]` (and `Factor Value[phenotype]` if variable) to 
 gene expression/repression caused by compound. For example:
 | Characteristics[genotype] | Characteristics[phenotype] | ... | FactorValue[phenotype] |
 |:--------------------------|:--------------------------|:-----|:-----------------------|
-| FOXP3-tet-off	| expression of FOXP3 |	... |expression of FOXP3 |
+| FOXP3-tet-off	| expression of FOXP3 |	... | expression of FOXP3 |
 | FOXP3-tet-off	| doxycycline-mediated repression of FOXP3 | ... | doxycycline-mediated repression of FOXP3 |
 
 
@@ -135,13 +135,14 @@ If a study involves both normal and tumor samples from the same patient, this sh
 | breast cancer	| patient 1 | neoplasm |
 | normal | healthy_guy_X | normal tissue |
 
-Characteristic[Individual] can be used to show which samples come from the same patient. Clinical information column could provide more information e.g. "normal tissue adjacent to tumor".
+`Characteristic[Individual]` is used to show which samples come from the same patient. 
+Disease refers to the disease of the donor and will be `cancer` even for the sample from the healthy tissue. 
 
 
 #### Organism parts and cell types not in ontology
 
 Generally use the main ontology label, not the synonyms and the most specific term, e.g. `heart ventricle` instead of `heart`.
-If the term is not in any ontology, look up the [previous zooma mapping](https://github.com/ebi-gene-expression-group/curated-metadata)
+If the term is not in any ontology, look up the [previous zooma mapping](https://github.com/ebi-gene-expression-group/curated-metadata).
 
 
 #### Technical annotations
