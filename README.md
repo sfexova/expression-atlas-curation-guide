@@ -17,5 +17,5 @@ Curation rules and experiment inclusion criteria for the Expression Atlas
 
 
 ## Other information
-* Accession codes overview
+* [Accession codes overview](accession_codes.md)
 * [Accession fields in MAGE-TAB](accession_fields_in_magetab.md)
