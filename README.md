@@ -3,7 +3,7 @@ Curation rules and experiment inclusion criteria for the Expression Atlas
 
 ## Curation Guide
 * General curation standards
-* Best practice rules
+* [Best practice rules](best_practice_rules.md)
 * Single cell curation
 * Controlled-access experiments
 * Zooma ontology term mapping
