@@ -19,6 +19,7 @@ Here is an overview of the letter codes used in Expression Atlas and their meani
 
 * **ATMX**: Arabidopsis experiments and array designs submitted through the At-MIAMExpress submission tool
 * **CBIL**: Computational Biology and Informatics Laboratory at University of Pennsylvania
+* **EHCA**: Human Cell Atlas (HCA) data from the first data release
 * **ERAD**: European Read Archive data, pipeline submission from Wellcome Trust Sanger Institute
 * **GEUV**: Genetic European Variation in Health and Disease (GEUVADIS), A European Medical Sequencing Consortium
 * **JJRD**: Johnson & Johnson Pharmaceutical Research and Development
