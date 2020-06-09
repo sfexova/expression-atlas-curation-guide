@@ -1,9 +1,14 @@
 # Curation Best Practice Guide
 
+This is a collection of rules for curating the biological or sample metadata of an Expression Atlas experiment, 
+hence the rules apply to all types of experiments (microarray, sequencing, proteomics). 
+The main purpose is to make sure curation is consistent between curators and terms can be mapped to ontologies, 
+which helps to retrieve experiment by metadata searches and makes visualisations in Expression Atlas clean and consistent 
+(e.g. a list of organism parts doesn't contain duplicates with slightly different terms). 
 
 ## General rules
 
-These rules are basic curation style guidelines and apply to basically all experiments. 
+These rules are basic curation style guidelines and apply to virtually all experiments. 
 
 #### **Keep values simple.** 
  For sample characteristics and factors, keep the values as concise as possible. 
@@ -45,9 +50,6 @@ Here are some examples of spelling out terms in full:
 Other common cases of acronyms:
 
     MEF => mouse embryonic fibroblast 
-    	(Note, in EFO we have MEF cell line and mouse embryonic fibroblast cell. 
-         MEF is also an acronym for compound "fluoromethane".)
-    LL-1 => interleukin-1
     TGF-beta => transforming growth factor beta
     IGF-1 => insulin-like growth factor 1
     TNF => tumor necrosis factor
@@ -120,7 +122,7 @@ The compound should be found in CHEBI ontology and the unit must be in EFO.
 | phorbol 13-acetate 12-myristate | 10 | millimolar |
 	
 
-If we have multiple compounds as a single factor, we can combine them into a single value under "compound" (and include the respective dose), for example `bovine serum albumin; 0.06 millimolar and sodium hydroxide; 0.4 millimolar`. The same applies for two doses of the same compound:  methotrexate; first dose 120 milligram per kilogram; second dose 60 milligram per kilogram 
+If we have multiple compounds as a single factor, we can combine them into a single value under "compound" (and include the respective dose), for example `bovine serum albumin; 0.06 millimolar and sodium hydroxide; 0.4 millimolar`. The same applies for two doses of the same compound:  methotrexate; first dose 120 milligram per kilogram; second dose 60 milligram per kilogram. Leave the dose factor blank in such a case. 
 
 
 #### Normal and tumour samples
