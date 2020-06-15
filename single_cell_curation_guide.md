@@ -1,12 +1,12 @@
 # Single Cell Curation Guide
 
-* [SDRF fields for all single cell experiments](#SDRF-file)
+* [SDRF fields](#SDRF-file)
 * [IDF fields](#IDF-file)
 * [Single cell quality control](#single-cell-quality-control)
 * [Cell type](#cell-type-and-inferred-cell-type)
 * [Experiments using spike-in RNAs](#experiments-using-spike-in-rnas)
-* [Experiments with multiplexed data files (10x, Drop-seq)](#Experiments-with-multiplexed-data-files-(10x,-Drop-seq))
-* [Cell-level metadata for droplet-based experiments](Cell-level-metadata-for-droplet-based-experiments)
+* [Experiments with multiplexed data files (10x, Drop-seq)](#experiments-with-multiplexed-data-files-10x-Drop-seq)
+* [Cell-level metadata for droplet-based experiments](#cell-level-metadata-for-droplet-based-experiments)
 
 
 ## SDRF file
@@ -66,7 +66,7 @@ other
 ```
 *smart-like → Libraries prepared with SMARTer Ultra Low RNA Kit for Illumina Sequencing (Clontech Cat#634936) can be also analysed with "smart-seq2" pipeline
 
-**end bias** [EFO_0010187]((https://www.ebi.ac.uk/ols/ontologies/efo/terms?iri=http%3A%2F%2Fwww.ebi.ac.uk%2Fefo%2FEFO_0010187))
+**end bias** ([EFO_0010187](https://www.ebi.ac.uk/ols/ontologies/efo/terms?iri=http%3A%2F%2Fwww.ebi.ac.uk%2Fefo%2FEFO_0010187))
 
 If the single cell library method has a bias towards reads from one end of the RNA molecule. 
 E.g. the 10x method does only sequence the 3' end of the mRNA, (so we use "3 prime tag"), 
@@ -199,10 +199,10 @@ Submitters usually do quality control (QC) at different levels:
 This can be visual inspection of the well (commonly used on Fluidigm C1 chips) or knowledge about the well content (e.g. when deliberately more than 1 cell is sorted into each well). We use Characteristics[single cell well quality] to store this kind of information.
 The values for this attribute should be "OK" or "not OK" (i.e. the well should be discarded from data analysis). If you have more detailed information about the "bad" wells, the following terms should be used:
 
-    "debris"
-    "multiple cells" or number of cells if known
-    "dead cell"
-    "no cell"
+    debris
+    multiple cells (or number of cells if known)
+    dead cell
+    no cell
 
 (2) After sequencing:
 
