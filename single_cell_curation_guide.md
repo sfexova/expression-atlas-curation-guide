@@ -1,18 +1,15 @@
 # Single Cell Curation Guide
 
-* [All single cell experiments](#All-single-cell-experiments)
-* Single cell quality control
-* Cell type
-* Experiments using spike-in RNAs
-* Experiments with multiplexed data files (10x, Drop-seq)
-* Cell-level metadata for droplet-based experiments
-* Inferred cell type - Issues:
-* Validation
-
-## All single cell experiments
+* [SDRF fields for all single cell experiments](#SDRF-file)
+* [IDF fields](#IDF-file)
+* [Single cell quality control](#single-cell-quality-control)
+* [Cell type](#cell-type-and-inferred-cell-type)
+* [Experiments using spike-in RNAs](#experiments-using-spike-in-rnas)
+* [Experiments with multiplexed data files (10x, Drop-seq)](#Experiments-with-multiplexed-data-files-(10x,-Drop-seq))
+* [Cell-level metadata for droplet-based experiments](Cell-leve- metadata-for-droplet-based-experiments)
 
 
-### SDRF file
+## SDRF file
 
 
 Single-cell experiments require special Comments fields in the SDRF so that 
@@ -149,47 +146,50 @@ Should be used as a experimental variable for all experiments that have individu
 
 ### Experiment type
 
-All scRNA-seq experiments must be annotated as "RNA-seq of coding RNA from single cells" under Comment[AEExperimentType]. 
+All scRNA-seq experiments must be annotated as 
+"[RNA-seq of coding RNA from single cells](https://www.ebi.ac.uk/ols/ontologies/efo/terms?iri=http%3A%2F%2Fwww.ebi.ac.uk%2Fefo%2FEFO_0005684)" under Comment[AEExperimentType]. 
 
 
 ### Protocols
 
-The following protocols are mandatory:
-sample collection protocol	EFO_0005518	Describes the procedure whereby biological samples for an experiment are sourced
-dissection protocol	EFO_0005519	Describes the procedure which dissects biological materials into anatomical sub-components, e.g. specific organs or tissues
-single cell isolation protocol	
-	Describes the procedure whereby single cells are isolated
-single cell nucleic acid library construction protocol	
-	Describes the procedure which generates single cell sequencing libraries
+The following protocols should be included:
 
-single cell nucleic acid sequencing protocol
-	EFO_0008439	Describes the processes performed and equipment used to determine the order of nucleotide bases in a nucleic acid sample from a single cell specimen.
+| Protocol Type |  EFO accession | Description | 
+|---|---|---| 
+| **sample collection protocol** | [EFO_0005518](https://www.ebi.ac.uk/ols/ontologies/efo/terms?iri=http%3A%2F%2Fwww.ebi.ac.uk%2Fefo%2FEFO_0005518) | Describes the procedure whereby biological samples for an experiment are sourced |
+| **dissection protocol** | [EFO_0005519](https://www.ebi.ac.uk/ols/ontologies/efo/terms?iri=http%3A%2F%2Fwww.ebi.ac.uk%2Fefo%2FEFO_0005519) | Describes the procedure which dissects biological materials into anatomical sub-components, e.g. specific organs or tissues |
+| **single cell isolation protocol** | [EFO_0010214](https://www.ebi.ac.uk/ols/ontologies/efo/terms?iri=http%3A%2F%2Fwww.ebi.ac.uk%2Fefo%2FEFO_0010214) | Describes the procedure whereby single cells are isolated |
+| **single cell nucleic acid library construction protocol** | [EFO_0010213](https://www.ebi.ac.uk/ols/ontologies/efo/terms?iri=http%3A%2F%2Fwww.ebi.ac.uk%2Fefo%2FEFO_0010213) | Describes the procedure which generates single cell sequencing libraries |
+| **single cell nucleic acid sequencing protocol** | [EFO_0008439](https://www.ebi.ac.uk/ols/ontologies/efo/terms?iri=http%3A%2F%2Fwww.ebi.ac.uk%2Fefo%2FEFO_0008439) | Describes the processes performed and equipment used to determine the order of nucleotide bases in a nucleic acid sample from a single cell specimen. |
 
 
 ### Expression Atlas comments
 
-Comment[EAExpectedClusters] - this should no longer be mandatory due to new processing pipeline (NG 20.09.2019)
+**Comment[EAExpectedClusters]** 
 
 For the visualisation of the data in single-cell Atlas, clustering is performed. For the algorithm to quickly find a reasonable number of clusters, we enter the expected number of clusters in the dataset. Since this on the level of experiment (not by library), we use a comment in the IDF file Comment[ExpectedClusters] and put the number of clusters. The best way of finding an estimate for this number is to check the publication related to the experiment, or asking the submitter (if possible).
 
-Comment[EAExperimentType]
+**Comment[EAExperimentType]**
 
 This has two fields the first with only two possible values: baseline or differential. The third optional field is trajectory for developmental datasets.
 
-Comment[EAAdditionalAttributes]
+**Comment[EAAdditionalAttributes]**
 
 This should contain the list of additional attributes (which are not already factors) that we would like to display in the portal, e.g. individual, sex, genotype. Tab-separated list (one value per column).
 
-Comment[EACurator]
+**Comment[EACurator]**
 
 Name of the curator that curated and loaded the experiment into Single Cell Atlas.
 
-Comment[ExpressionAtlasAccession]
+**Comment[ExpressionAtlasAccession]**
 
 This field will replace Comment[ArrayExpressAccession] for the experiments that won’t be loaded in ArrayExpress but will be loaded in Single Cell Atlas.
 
 
-## Single cell quality control
+
+## More explanations and special rules
+
+### Single cell quality control
 
 Submitters usually do quality control (QC) at different levels:
 
@@ -220,53 +220,41 @@ This means if there are some samples that are not "OK" under "single cell well q
 If it is unknown at what stage the quality filtering was done, we also use the attribute Characteristics[single cell quality] with the values above.
 
 
-## Cell type
+### Cell type and inferred cell type
 
 [inferred cell type]
 
 This is supplied by the data submitter. If the experiment involves discovering new cell types or pooled cells from a whole organ or organism, the precise cell type might be undefined at the start of the experiment but inferred later during their analysis. Different cell types are inferred based upon their expression profile to other known cell types or known functions.
 
 
-Experiments using spike-in RNAs
+### Experiments using spike-in RNAs
 
 Spike-in RNAs are sometimes added to single-cell libraries to prevent loss of molecules, for quality control, and/or normalisation. There are two possibilities: (1) commercial spike-in kits or (2) custom spike-in mix. In case of a commercial spike-in mixture, we ask for the name of the kit, and the final dilution factor. We put the details like full name and catalogue number in the library construction protocol and insert the name under the Comment[spike in].
 
 The Smart-seq2 protocol usually includes the commercial ERCC spike-in mix.
 
-[spike in]
-
-none
-ERCC
-ERCC mix1
-ERCC mix2
-ERCC mix1 and mix2
-
-[spike in dilution]
-
-e.g. 1:40000
-
 Note that in the absence of spike-ins columns should not be provided, or should contain empty values.
 Experiments with multiplexed data files (10x, Drop-seq)
 
 
-## Experiments with multiplexed data files (10x, Drop-seq)
+### Experiments with multiplexed data files (10x, Drop-seq)
 
 To map each fastq file, we add the following comments in the SDRF and fill in the file name. 
 These comments are also used to create BAM files for ENA brokering and Atlas analysis.
 
-Comment	10xV1a	10xV1i	10xV2	Drop-seq
-[read1 file] 	R1	-RA (one interleaved file with both reads)	R1	R1
-[read2 file]	R3	R2	R2
-[index1 file] (if present)	R2	-I1	I1	I1
-[index2 file] (if present)	I1	-I2	
+| Comment | 10xV1a | 10xV1i | 10xV2 | Drop-seq |
+|---|---|---|---|---|
+| [read1 file]  | R1 | -RA (one interleaved file with both reads) | R1 | R1 |
+| [read2 file] | R3 | -RA (one interleaved file with both reads) | R2 | R2 |
+| [index1 file] (if present) | R2 | -I1 | I1 | I1 |
+| [index2 file] (if present) | I1 | -I2 | |	
 	
 
 
 Additional info: The file contents for each version of 10x (with default read size and offset):
-Comment	10xV1a	10xV1i	10xV2	Drop-seq
-[read1 file] 	cDNA (98bp, offset 0)	
 
-read 1: cDNA (98bp, offset 0)
+| Comment | 10xV1a | 10xV1i | 10xV2 | Drop-seq |
+| [read1 file] | cDNA (98bp, offset 0) | read 1: cDNA (98bp, offset 0)
 
 
 read 2: UMI (10bp, offset 0)
@@ -306,13 +294,17 @@ To state the final cell count that was used for further analysis, we use the Com
 [cell count pre filtering]	Number of cells detected in the library before quality filtering was applied
 Cell-level metadata for droplet-based experiments
 
+
+## Cell-level metadata for droplet-based experiments
+
 Some droplet-based sequencing submissions will have additional metadata such as inferred cell type. As the curated SDRF is not demultiplexed by cell only by sample, we cannot annotate at the level of the cell. So we need to provide a separate file with additional metadata.
 
 The file should be named experiment-accession.cells.txt (e.g. E-GEOD-130148.cells.txt) and placed in the single cell experiment loading directory along with the IDF/SDRF for analysis.
 
 
 The cells.txt file should be a tab-separated file with the Cell ID in the first column and annotations in the following columns:
-Cell ID	
+
+**Cell ID**
 
 This should be a list of the run ID of the library and the cell barcode connected by a hyphen.
 
@@ -327,4 +319,10 @@ usually the BioSampleID, e.g. SAMN123045-AAGCTTACCGG
 If there are no BioSampleIDs then these should be mapped to the technical group name i.e. group1-cell barcode (no spaces allowed)
 
 If there are no technical replicates and no ENA_RUN, use the value from the RUN column.
+
+**inferred cell type** (and **authors inferred cell type**)
+
+This should be the curated list of inferred cell types (curated where possible from submitter supplied inferred cell types mapped to EFO terms). The header should be the same as those for sample characteristics of the Experiment design file.
+
+	
 
