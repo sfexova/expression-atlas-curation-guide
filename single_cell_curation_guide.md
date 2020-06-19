@@ -38,6 +38,7 @@ Fluidigm C1
 10x
 Drop-seq
 inDrop
+Seq-Well
 mouth pipette
 cell picking
 laser-capture microdissection
@@ -57,6 +58,7 @@ smart-seq2
 10xV2
 10xV3
 drop-seq
+seq-well
 SCRB-seq	
 MARS-seq
 CEL-seq
