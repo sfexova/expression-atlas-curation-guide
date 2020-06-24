@@ -25,13 +25,9 @@ These are ontologised cell type annotations - map to a matching ontology term (f
 
 For example:
 
-It is reasonable to map all these to this one term:
+It is reasonable to map all these to this one term:![mapping to a parent term](../images/ICT_term_mapping.png)
 
-![mapping to a parent term](../images/ICT_term_mapping.png)
-
-But in other cases ontologization would mean flattening the data too much and binning very distinct cell types (even across experiments) together if the nearest available ontology term is quite general:
-
-![not advisable to map](../images/ICT_impossible_to_map.png)
+But in other cases ontologization would mean flattening the data too much and binning very distinct cell types (even across experiments) together if the nearest available ontology term is quite general:![not advisable to map](../images/ICT_impossible_to_map.png)
 
 In such cases we forego ontologization as it would basically obscure all the data and just curate for style, conciseness etc as best as possible (SCEA cannot chain multiple ontology terms together, only one term has to be chosen.) In the example above, since the information provided didn’t appear sufficient to justify creating new terms such as ‘primary visual area 1-4 GABAergic neuron’, the choice would be to annotate these with the nearest ontology terms matching either the location - primary visual cortex - or the cell type - GABAergic neuron. Neither of these two options is satisfactory and sufficient, therefore SCEA would not ontologize these annotations and leave them as text strings. In the ontologized [inferred cell type - ontology labels] column we do, however, omit any marker gene annotations. The idea is that although SCEA cannot chain ontology labels and any such annotations will effectively become just text-strings, in the [inferred cell type - ontology labels] we only use ontology concepts - even if these are just component parts of what will end up being read as a text string by the pipelines. In this particular case we would therefore keep the location annotation and the cell type annotation in the [inferred cell type - ontology labels] but without the marker gene (and as concise as possible) > e.g. ‘primary visual cortex layer 5 and 6 GABAergic neuron’.
 
